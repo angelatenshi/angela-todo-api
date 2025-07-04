@@ -4,24 +4,29 @@ Hello, this is Angela! Here is my simple and clean Laravel-based Todo API. I've 
 No frontend, no frills — just a solid backend API that does what it’s supposed to from the PDF requirement.
 
 ## Setup Instructions
-1. Clone this repository:
+1. My project is Laravel 12 and it requires:
+   ```
+   PHP 8.2 or higher. Mine is PHP 8.4.
+   You can check your php version by running php -v
+   ```
+2. Clone this repository:
    ```
    git clone https://github.com/your-username/angela-todo-api.git
    cd angela-todo-api
    ```
-2. Install dependencies (Important):
+3. Install dependencies (Important):
    ```
    composer install
    ```
-3. Create a `.env` file (Important):
+4. Create a `.env` file (Important):
    ```
    cp .env.example .env
    ```
-4. Generate your app key (Important):
+5. Generate your app key (Important):
    ```
    php artisan key:generate
    ```
-5. Set up the database (Important):
+6. Set up the database (Important):
    - In your `.env`, configure SQLite:
      ```
      DB_CONNECTION=sqlite
@@ -34,16 +39,16 @@ No frontend, no frills — just a solid backend API that does what it’s suppos
      ```
      touch database/database.sqlite   # or create it manually on Windows
      ```
-6. Run migrations:
+7. Run migrations:
    ```
    php artisan migrate
    ```
-7. Serve the app:
+8. Serve the app:
    ```
    php artisan serve
    ```
-
 If the installation doesn't work on your end, kindly contact me through my personal email. I will galdly help.
+
 
 ## How to Run the Project
 Once the server is running, the base URL will typically be:
