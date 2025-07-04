@@ -1,61 +1,118 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Todo API
+Hello, this is Angela! Here is my simple and clean Laravel-based Todo API. I've built this as part of my technical assessment for Adaca. It supports basic CRUD functionality and an added ONE bonus feature: search by title.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+No frontend, no frills — just a solid backend API that does what it’s supposed to from the PDF requirement.
 
-## About Laravel
+## Setup Instructions
+1. Clone this repository:
+   ```
+   git clone https://github.com/your-username/angela-todo-api.git
+   cd angela-todo-api
+   ```
+2. Install dependencies (Important):
+   ```
+   composer install
+   ```
+3. Create a `.env` file (Important):
+   ```
+   cp .env.example .env
+   ```
+4. Generate your app key (Important):
+   ```
+   php artisan key:generate
+   ```
+5. Set up the database (Important):
+   - In your `.env`, configure SQLite:
+     ```
+     DB_CONNECTION=sqlite
+     DB_DATABASE="absolute/path/to/database.sqlite"
+     ```
+     Replace the path with your actual full path to the SQLite file (use forward slashes).
+     Mine was "DB_DATABASE="C:/Users/Angela Mae Villamar/angela-todo-api/database/database.sqlite".
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+   - Create the SQLite file:
+     ```
+     touch database/database.sqlite   # or create it manually on Windows
+     ```
+6. Run migrations:
+   ```
+   php artisan migrate
+   ```
+7. Serve the app:
+   ```
+   php artisan serve
+   ```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+If the installation doesn't work on your end, kindly contact me through my personal email. I will galdly help.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## How to Run the Project
+Once the server is running, the base URL will typically be:
+http://127.0.0.1:8000
 
-## Learning Laravel
+```
+Your API routes will be available under:
+http://127.0.0.1:8000/api
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## API Endpoints
+I tested these by running php artisan route:list, 
+try it on your end to make sure the API routes are working. 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Method | Endpoint             | Description             |
+|--------|----------------------|-------------------------|
+| GET    | /api/todos           | List all todos          |
+| POST   | /api/todos           | Create a new todo       |
+| PUT    | /api/todos/{id}      | Update completed status |
+| DELETE | /api/todos/{id}      | Delete a todo           |
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Bonus Feature
+I added ONE optional function — **search by title**. 
 
-### Premium Partners
+Example:
+```
+GET /api/todos?search=buy
+```
+This will return all todos with "buy" in the title.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
 
-## Contributing
+## How to Test with Postman
+### Headers (for all requests):
+```
+Content-Type: application/json
+Accept: application/json
+```
+### 1. Create a Todo
+- Method: `POST`
+- URL: `http://127.0.0.1:8000/api/todos`
+- Body:
+```json
+{
+  "title": "Buy myself a necklace"
+}
+```
+### 2. List All Todos
+- Method: `GET`
+- URL: `http://127.0.0.1:8000/api/todos`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Search Todos by Title
+- Method: `GET`
+- URL: `http://127.0.0.1:8000/api/todos?search=buy`
 
-## Code of Conduct
+### 4. Update Todo Completion
+- Method: `PUT`
+- URL: `http://127.0.0.1:8000/api/todos/1`
+- Body:
+```json
+{
+  "completed": true
+}
+```
+### 5. Delete a Todo
+- Method: `DELETE`
+- URL: `http://127.0.0.1:8000/api/todos/1`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+That's all for me. I hope you guys like my work. Happy testing!
