@@ -11,7 +11,7 @@ No frontend, no frills — just a solid backend API that does what it’s suppos
    ```
 2. Clone this repository:
    ```
-   git clone https://github.com/your-username/angela-todo-api.git
+   git clone https://github.com/angelatenshi/angela-todo-api.git
    cd angela-todo-api
    ```
 3. Install dependencies (Important):
